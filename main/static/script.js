@@ -168,24 +168,46 @@ document.querySelectorAll('.page-link').forEach(link => {
 
             currentStep += 1;
             updateStep();
-        } else {
-            // Final step completed – save data and redirect to dashboard
+        }
+        else {
+            // 1. Collect Data
             const allergies = document.getElementById('allergies')?.value || '';
+            const extraInfo = document.getElementById('extra-info')?.value || ''; // Added your step 4
             const consumerType = document.querySelector('input[name="consumer_type"]:checked')?.value || '';
             const fitnessGoal = document.querySelector('input[name="fitness_goal"]:checked')?.value || '';
             
-            // Save to localStorage for profile display
-            localStorage.setItem('consumerType', consumerType);
-            localStorage.setItem('fitnessGoal', fitnessGoal);
-            localStorage.setItem('allergies', allergies);
+            // 2. Prepare for Django (CSRF is required for POST)
+            const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
             
-            // In a real app, you would send this data to the server here
-            console.log('Setup data:', { consumerType, fitnessGoal, allergies });
-            
-            // Redirect to dashboard after a brief delay
-            setTimeout(() => {
-                window.location.href = 'dashboard.html';
-            }, 500);
+            // 3. Send to Server
+            fetch('', { // Sending to the current URL
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-CSRFToken': csrfToken
+                },
+                // We use URLSearchParams to match Django's expected POST format
+                body: new URLSearchParams({
+                    'dietary_preferences': consumerType,
+                    'goals': fitnessGoal,
+                    'allergies': allergies,
+                    'extra_info': extraInfo
+                })
+            })
+            .then(response => response.json()) // Parse the JSON from Django
+            .then(data => {
+                if (data.status === 'success') {
+                    console.log(data.message);
+                    
+                    // Use the redirect URL sent by the server
+                    window.location.href = data.redirect_url; 
+                } else {
+                    alert("Logic error: " + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Fetch Error:', error);
+            });
         }
     });
 
@@ -200,20 +222,20 @@ document.querySelectorAll('.page-link').forEach(link => {
 })();
 
 // ---------------- Registration -> Questionnaire redirect ----------------
-(function setupRegistrationRedirect() {
-    const registerForm = document.querySelector('form.login-form');
-    if (!registerForm) return;
+// (function setupRegistrationRedirect() {
+//     const registerForm = document.querySelector('form.login-form');
+//     if (!registerForm) return;
 
-    const registerButton = registerForm.querySelector('.btn');
-    if (!registerButton || registerButton.textContent.trim() !== 'Register') return;
+//     const registerButton = registerForm.querySelector('.btn');
+//     if (!registerButton || registerButton.textContent.trim() !== 'Register') return;
 
-    registerForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        // In a real app, you would send the data to the server here.
-        // For now, after "Register" we take the user to the Food Scanner Setup questionnaire.
-        window.location.href = 'questionnaire.html';
-    });
-})();
+//     registerForm.addEventListener('submit', (e) => {
+//         e.preventDefault();
+//         // In a real app, you would send the data to the server here.
+//         // For now, after "Register" we take the user to the Food Scanner Setup questionnaire.
+//         window.location.href = '/questionnaire/';
+//     });
+// })();
 
 // ---------------- Dashboard Functionality ----------------
 (function setupDashboard() {

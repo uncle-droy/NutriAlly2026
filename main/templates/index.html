@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Know What You Eat - Food Intelligence</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
 <body>
     <!-- Dark Mode Toggle -->
@@ -45,7 +46,7 @@
             </p>
             
             <!-- Go to dedicated authentication page -->
-            <a href="login.html" class="cta-button page-link">
+            <a href="{% url 'main:login' %}" class="cta-button page-link">
                 Get Started
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -157,7 +158,7 @@
         </div>
     </section>
 
-    <script src="script.js"></script>
+    <script src="{% static 'script.js' %}"></script>
 </body>
 </html>
 

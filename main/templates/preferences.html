@@ -42,26 +42,16 @@
     <input type="text" name="allergies" value="{{ profile.allergies }}"><br><br>
 
     <label>Dietary Preferences:</label><br>
-    <label>
-        <input type="checkbox" name="dietary_preferences" value="vegetarian"
-        {% if "vegetarian" in profile.dietary_preferences %}checked{% endif %}>
-        Vegetarian
-    </label>
-    <label>
-        <input type="checkbox" name="dietary_preferences" value="vegan"
-        {% if "vegan" in profile.dietary_preferences %}checked{% endif %}>
-        Vegan
-    </label>
-    <label>
-        <input type="checkbox" name="dietary_preferences" value="gluten_free"
-        {% if "gluten_free" in profile.dietary_preferences %}checked{% endif %}>
-        Gluten Free
-    </label>
-    <label>
-        <input type="checkbox" name="dietary_preferences" value="keto"
-        {% if "keto" in profile.dietary_preferences %}checked{% endif %}>
-        Keto
-    </label>
+    <select name="dietary_preferences">
+        <option value="vegan" {% if profile.dietary_preferences == "vegan" %}selected{% endif %}>Vegan</option>
+        <option value="vegetarian" {% if profile.dietary_preferences == "vegetarian" %}selected{% endif %}>Vegetarian</option>
+        <option value="non_vegetarian" {% if profile.dietary_preferences == "non_vegetarian" %}selected{% endif %}>Non-Vegetarian</option>
+        <option value="pescatarian" {% if profile.dietary_preferences == "pescatarian" %}selected{% endif %}>Pescatarian</option>
+        <optiion value="gluten_free" {% if profile.dietary_preferences == "gluten_free" %}selected{% endif %}>Gluten Free</option>
+        <option value="keto" {% if profile.dietary_preferences == "keto" %}selected{% endif %}>Keto</option>
+        <option value="paleo" {% if profile.dietary_preferences == "paleo" %}selected{% endif %}>Paleo</option>
+        <option value="other" {% if profile.dietary_preferences == "other" %}selected{% endif %}>Other</option>
+    </select>
     <br><br>
 
     <label>Activity Level:</label><br>
@@ -76,6 +66,9 @@
 
     <label>Goals:</label><br>
     <textarea name="goals">{{ profile.goals }}</textarea><br><br>
+
+    <label>Extra Information:</label><br>
+    <textarea name="extra_information">{{ profile.extra_information }}</textarea><br><br>
 
     <button type="submit">Save Preferences</button>
 </form>

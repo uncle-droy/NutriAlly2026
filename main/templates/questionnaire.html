@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    {% load static %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food Scanner Setup - Know What You Eat</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
 <body>
     <!-- Dark Mode Toggle -->
@@ -32,14 +33,15 @@
                     <span class="wizard-title-setup">Setup</span>
                 </h1>
                 <div class="wizard-step-text">
-                    Step <span id="wizard-step-number">1</span> of 3
+                    Step <span id="wizard-step-number">1</span> of 4
                 </div>
             </div>
 
             <div class="wizard-progress">
                 <div class="wizard-progress-bar" id="wizard-progress-bar"></div>
             </div>
-
+            {% csrf_token %}
+            <form id="questionnaire-form" method="POST">
             <!-- Step 1 -->
             <div class="wizard-step wizard-step-active" data-step="1">
                 <h2 class="wizard-question">What kind of food consumer are you?</h2>
@@ -95,6 +97,20 @@
                     placeholder="Type ingredients here..."></textarea>
             </div>
 
+            <div class="wizard-step" data-step="4">
+                <h2 class="wizard-question">Anything else we should know about?</h2>
+                <p class="wizard-helper-text">
+                    Enter any ingredients you're allergic to (e.g., peanuts, garlic, onions)
+                </p>
+
+                <textarea
+                    class="wizard-textarea"
+                    id="extra-info"
+                    name="extra_info"
+                    rows="5"
+                    placeholder="Type here..."></textarea>
+            </div>
+
             <div class="wizard-footer">
                 <button type="button" class="wizard-back" id="wizard-back">Back</button>
                 <button type="button" class="wizard-next" id="wizard-next">
@@ -105,7 +121,7 @@
         </div>
     </section>
 
-    <script src="script.js"></script>
+    <script src="{% static 'script.js' %}"></script>
 </body>
 </html>
 
