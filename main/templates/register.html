@@ -2,22 +2,66 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Register</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f4f4f4; }
-        .container { background: white; padding: 20px; border-radius: 8px; max-width: 400px; margin: auto; }
-        .btn { background: #28a745; color: white; border: none; padding: 10px; cursor: pointer; width: 100%; }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Know What You Eat</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h2>Create an Account</h2>
-        <form method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn">Sign Up</button>
-        </form>
-        <p>Already have an account? <a href="{% url 'main:login' %}">Login here</a></p>
-    </div>
+    <!-- Dark Mode Toggle -->
+    <button class="dark-mode-toggle" id="darkModeToggle">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+    </button>
+
+    <!-- Help Button -->
+    <button class="help-button">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+        </svg>
+    </button>
+
+    <!-- Register Section -->
+    <section class="login-section">
+        <div class="login-container">
+            <h2>Register</h2>
+            <p class="login-subtitle">Create your account to start tracking what you eat.</p>
+
+            <form method="POST" class="login-form">
+                <p>
+                    <label for="reg_username">Username:</label>
+                    <input type="text" id="reg_username" name="username" required>
+                </p>
+
+                <p>
+                    <label for="reg_email">Email:</label>
+                    <input type="email" id="reg_email" name="email" required>
+                </p>
+
+                <p>
+                    <label for="reg_password1">Password:</label>
+                    <input type="password" id="reg_password1" name="password1" required>
+                </p>
+
+                <p>
+                    <label for="reg_password2">Confirm Password:</label>
+                    <input type="password" id="reg_password2" name="password2" required>
+                </p>
+
+                <button type="submit" class="btn">Register</button>
+            </form>
+
+            <p class="register-text">
+                Already have an account?
+                <a href="login.html" class="page-link">Login here</a>
+            </p>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
 </body>
 </html>
+
+

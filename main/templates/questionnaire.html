@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Scanner Setup - Know What You Eat</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Dark Mode Toggle -->
+    <button class="dark-mode-toggle" id="darkModeToggle">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+    </button>
+
+    <!-- Help Button -->
+    <button class="help-button">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+        </svg>
+    </button>
+
+    <section class="wizard-section">
+        <div class="wizard-card">
+            <div class="wizard-header">
+                <h1 class="wizard-title">
+                    <span class="wizard-title-food">Food</span>
+                    <span class="wizard-title-scanner">Scanner</span>
+                    <span class="wizard-title-setup">Setup</span>
+                </h1>
+                <div class="wizard-step-text">
+                    Step <span id="wizard-step-number">1</span> of 3
+                </div>
+            </div>
+
+            <div class="wizard-progress">
+                <div class="wizard-progress-bar" id="wizard-progress-bar"></div>
+            </div>
+
+            <!-- Step 1 -->
+            <div class="wizard-step wizard-step-active" data-step="1">
+                <h2 class="wizard-question">What kind of food consumer are you?</h2>
+
+                <div class="wizard-options">
+                    <label class="wizard-option">
+                        <input type="radio" name="consumer_type" value="Vegan">
+                        <span class="wizard-option-content">Vegan</span>
+                    </label>
+                    <label class="wizard-option">
+                        <input type="radio" name="consumer_type" value="Vegetarian">
+                        <span class="wizard-option-content">Vegetarian</span>
+                    </label>
+                    <label class="wizard-option">
+                        <input type="radio" name="consumer_type" value="Non-Vegetarian">
+                        <span class="wizard-option-content">Non-Vegetarian</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="wizard-step" data-step="2">
+                <h2 class="wizard-question">What are your fitness goals?</h2>
+
+                <div class="wizard-options">
+                    <label class="wizard-option">
+                        <input type="radio" name="fitness_goal" value="Gaining Muscle">
+                        <span class="wizard-option-content">Gaining Muscle</span>
+                    </label>
+                    <label class="wizard-option">
+                        <input type="radio" name="fitness_goal" value="Losing Fat">
+                        <span class="wizard-option-content">Losing Fat</span>
+                    </label>
+                    <label class="wizard-option">
+                        <input type="radio" name="fitness_goal" value="Maintaining Overall Body">
+                        <span class="wizard-option-content">Maintaining Overall Body</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="wizard-step" data-step="3">
+                <h2 class="wizard-question">Are you allergic to specific substances?</h2>
+                <p class="wizard-helper-text">
+                    Enter any ingredients you're allergic to (e.g., peanuts, garlic, onions)
+                </p>
+
+                <textarea
+                    class="wizard-textarea"
+                    id="allergies"
+                    name="allergies"
+                    rows="5"
+                    placeholder="Type ingredients here..."></textarea>
+            </div>
+
+            <div class="wizard-footer">
+                <button type="button" class="wizard-back" id="wizard-back">Back</button>
+                <button type="button" class="wizard-next" id="wizard-next">
+                    <span id="wizard-next-label">Next</span>
+                    <span class="wizard-next-icon">›</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
