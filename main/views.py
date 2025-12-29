@@ -3,6 +3,8 @@ from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from .models import Profile
 
 def login_view(request):
     form = AuthenticationForm(request, data=request.POST or None)
@@ -32,8 +34,32 @@ def scan(request):
 def progress(request):
     return HttpResponse("Progress Page")
 
+@login_required
 def preferences(request):
-    return HttpResponse("Preferences Page")
+    profile = Profile.objects.get(user=request.user)
+
+    if request.method == "POST":
+        profile.name = request.POST.get("name", "")
+        profile.age = request.POST.get("age") or None
+        profile.gender = request.POST.get("gender", "")
+
+        profile.height = request.POST.get("height") or None
+        profile.weight = request.POST.get("weight") or None
+
+        profile.fav = request.POST.get("fav", "")
+        profile.allergies = request.POST.get("allergies", "")
+
+        profile.dietary_preferences = request.POST.getlist("dietary_preferences")
+        profile.activity_level = request.POST.get("activity_level", "")
+        profile.goals = request.POST.get("goals", "")
+
+        profile.save()
+        return redirect("main:scan")
+
+    return render(request, "preferences.html", {
+        "profile": profile
+    })
+       
 
 def assistant(request):
     return HttpResponse("Assistant Page")

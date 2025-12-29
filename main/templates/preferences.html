@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Preferences</title>
+</head>
+<body>
+
+<h1>User Preferences</h1>
+
+<form method="post">
+    {% csrf_token %}
+
+    <label>Name:</label><br>
+    <input type="text" name="name" value="{{ profile.name }}"><br><br>
+
+    <label>Gender:</label><br>
+    <select name="gender">
+        <option value="">---</option>
+        <option value="male" {% if profile.gender == "male" %}selected{% endif %}>Male</option>
+        <option value="female" {% if profile.gender == "female" %}selected{% endif %}>Female</option>
+        <option value="other" {% if profile.gender == "other" %}selected{% endif %}>Other</option>
+    </select><br><br>
+
+    <label>Age:</label><br>
+    <input type="number" name="age"
+           value="{{ profile.age|default_if_none:'' }}"><br><br>
+
+    <label>Height (cm):</label><br>
+    <input type="number" step="0.1" name="height"
+           value="{{ profile.height|default_if_none:'' }}"><br><br>
+
+    <label>Weight (kg):</label><br>
+    <input type="number" step="0.1" name="weight"
+           value="{{ profile.weight|default_if_none:'' }}"><br><br>
+
+    <label>Favorite Cuisine:</label><br>
+    <input type="text" name="fav" value="{{ profile.fav }}"><br><br>
+
+    <label>Allergies:</label><br>
+    <input type="text" name="allergies" value="{{ profile.allergies }}"><br><br>
+
+    <label>Dietary Preferences:</label><br>
+    <label>
+        <input type="checkbox" name="dietary_preferences" value="vegetarian"
+        {% if "vegetarian" in profile.dietary_preferences %}checked{% endif %}>
+        Vegetarian
+    </label>
+    <label>
+        <input type="checkbox" name="dietary_preferences" value="vegan"
+        {% if "vegan" in profile.dietary_preferences %}checked{% endif %}>
+        Vegan
+    </label>
+    <label>
+        <input type="checkbox" name="dietary_preferences" value="gluten_free"
+        {% if "gluten_free" in profile.dietary_preferences %}checked{% endif %}>
+        Gluten Free
+    </label>
+    <label>
+        <input type="checkbox" name="dietary_preferences" value="keto"
+        {% if "keto" in profile.dietary_preferences %}checked{% endif %}>
+        Keto
+    </label>
+    <br><br>
+
+    <label>Activity Level:</label><br>
+    <select name="activity_level">
+        <option value="">---</option>
+        <option value="sedentary" {% if profile.activity_level == "sedentary" %}selected{% endif %}>Sedentary</option>
+        <option value="lightly_active" {% if profile.activity_level == "lightly_active" %}selected{% endif %}>Lightly Active</option>
+        <option value="moderately_active" {% if profile.activity_level == "moderately_active" %}selected{% endif %}>Moderately Active</option>
+        <option value="very_active" {% if profile.activity_level == "very_active" %}selected{% endif %}>Very Active</option>
+        <option value="extra_active" {% if profile.activity_level == "extra_active" %}selected{% endif %}>Extra Active</option>
+    </select><br><br>
+
+    <label>Goals:</label><br>
+    <textarea name="goals">{{ profile.goals }}</textarea><br><br>
+
+    <button type="submit">Save Preferences</button>
+</form>
+
+</body>
+</html>
