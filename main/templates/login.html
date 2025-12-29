@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Know What You Eat</title>
-    <link rel="stylesheet" href="styles.css">
+    
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+
 </head>
 <body>
     <!-- Dark Mode Toggle (optional but keeps design consistent) -->
@@ -32,7 +35,7 @@
             <!-- Form structure/text mirroring the reference image -->
             <form method="POST" class="login-form">
                 <!-- If you later use Django, you can re‑add {% csrf_token %} here -->
-                
+                {% csrf_token %}
                 <p>
                     <label for="username">Username:</label>
                     <input type="text" id="username" name="username" required>
@@ -53,7 +56,8 @@
         </div>
     </section>
 
-    <script src="script.js"></script>
+    <script src="{% static 'script.js' %}"></script>
+
 </body>
 </html>
 

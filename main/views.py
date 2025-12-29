@@ -26,7 +26,8 @@ def register(request):
     return render(request, 'register.html', {'form': form})
 
 def logout_view(request):
-    return HttpResponse("Logout Page")
+    logout(request)
+    return redirect("main:login")
 
 def scan(request):
     return HttpResponse("Scan Page")
