@@ -137,20 +137,17 @@ body.page-loaded {
     font-family: 'Montserrat', 'Poppins', sans-serif;
 }
 
-.word-know {
+.word-nutrially {
     color: #2d5016;
+    font-weight: 900;
 }
 
-.word-what {
-    color: #ffa500;
-}
-
-.word-you {
-    color: #ff8c00;
-}
-
+/* Keep old classes for backward compatibility but hide them */
+.word-know,
+.word-what,
+.word-you,
 .word-eat {
-    color: #ff4444;
+    display: none;
 }
 
 .hero-description {
@@ -1603,11 +1600,15 @@ body.dark-mode .stat-number {
     color: #ffffff;
 }
 
+body.dark-mode .word-nutrially {
+    color: #ffffff;
+}
+
 body.dark-mode .word-know,
 body.dark-mode .word-what,
 body.dark-mode .word-you,
 body.dark-mode .word-eat {
-    color: #ffffff;
+    display: none;
 }
 
 body.dark-mode .wizard-title-food,
