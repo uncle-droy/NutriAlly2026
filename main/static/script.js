@@ -210,7 +210,7 @@ document.querySelectorAll('.page-link').forEach(link => {
     registerForm.addEventListener('submit', (e) => {
         e.preventDefault();
         // In a real app, you would send the data to the server here.
-        // For now, after "Register" we take the user to the Food Scanner Setup questionnaire.
+        // For now, after "Register" we take the user to the NutriAlly Setup questionnaire.
         window.location.href = 'questionnaire.html';
     });
 })();

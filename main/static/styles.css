@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -5,7 +7,7 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-family: 'Poppins', 'Inter', 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     background: linear-gradient(to right, #f0f8f0, #fffef0);
     min-height: 100vh;
     position: relative;
@@ -132,6 +134,7 @@ body.page-loaded {
     line-height: 1.1;
     margin-bottom: 30px;
     letter-spacing: -2px;
+    font-family: 'Montserrat', 'Poppins', sans-serif;
 }
 
 .word-know {
@@ -158,6 +161,8 @@ body.page-loaded {
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+    font-family: 'Inter', 'Poppins', sans-serif;
+    font-weight: 400;
 }
 
 .cta-button {
@@ -392,6 +397,7 @@ body.page-loaded {
     font-weight: 700;
     color: #333;
     margin-bottom: 12px;
+    font-family: 'Montserrat', 'Poppins', sans-serif;
 }
 
 .feature-description {
@@ -586,6 +592,7 @@ body.page-loaded {
     font-size: 28px;
     font-weight: 800;
     letter-spacing: 0.4px;
+    font-family: 'Montserrat', 'Poppins', sans-serif;
 }
 
 .wizard-title-food {
@@ -821,6 +828,7 @@ body.page-loaded {
     font-weight: 800;
     letter-spacing: -1px;
     display: inline-block;
+    font-family: 'Montserrat', 'Poppins', sans-serif;
 }
 
 .dashboard-title-food {
@@ -1542,7 +1550,73 @@ body.page-loaded {
 /* ==================== DARK MODE STYLES ==================== */
 body.dark-mode {
     background: linear-gradient(to right, #1a1a1a, #2d2d2d);
+    color: #ffffff;
+}
+
+/* Dark mode text colors - ensure all text is visible */
+body.dark-mode * {
+    color: inherit;
+}
+
+body.dark-mode .hero-description,
+body.dark-mode .stat-label,
+body.dark-mode .cta-text,
+body.dark-mode .badge,
+body.dark-mode .wizard-step-text,
+body.dark-mode .wizard-helper-text,
+body.dark-mode .wizard-option-content,
+body.dark-mode .login-subtitle,
+body.dark-mode .register-text,
+body.dark-mode .upload-text {
     color: #e0e0e0;
+}
+
+body.dark-mode .main-heading,
+body.dark-mode .dashboard-title,
+body.dark-mode .wizard-title,
+body.dark-mode .feature-title,
+body.dark-mode .dashboard-card-title,
+body.dark-mode .wizard-question,
+body.dark-mode .login-container h2,
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4 {
+    color: #ffffff;
+}
+
+body.dark-mode .tag {
+    color: #ffffff;
+    background: #2d2d2d;
+    border: 1px solid #444;
+}
+
+body.dark-mode .feature-card {
+    background: #2d2d2d;
+    color: #ffffff;
+}
+
+body.dark-mode .feature-description {
+    color: #d0d0d0;
+}
+
+body.dark-mode .stat-number {
+    color: #ffffff;
+}
+
+body.dark-mode .word-know,
+body.dark-mode .word-what,
+body.dark-mode .word-you,
+body.dark-mode .word-eat {
+    color: #ffffff;
+}
+
+body.dark-mode .wizard-title-food,
+body.dark-mode .wizard-title-scanner,
+body.dark-mode .wizard-title-setup,
+body.dark-mode .dashboard-title-food,
+body.dark-mode .dashboard-title-scanner {
+    color: #ffffff;
 }
 
 body.dark-mode .dashboard-card {
@@ -1551,7 +1625,7 @@ body.dark-mode .dashboard-card {
 }
 
 body.dark-mode .dashboard-card-title {
-    color: #e0e0e0;
+    color: #ffffff;
 }
 
 body.dark-mode .upload-area {
@@ -1781,20 +1855,33 @@ body.dark-mode .wizard-title {
 }
 
 body.dark-mode .login-form input,
+body.dark-mode .login-form label,
+body.dark-mode .login-form select,
+body.dark-mode .login-form textarea,
 body.dark-mode .wizard-textarea {
     background: #1f1f1f;
     border-color: #444;
     color: #e0e0e0;
 }
 
+body.dark-mode .login-form label {
+    color: #d0d0d0;
+}
+
 body.dark-mode .wizard-option {
     background: #1f1f1f;
     border-color: #444;
+    color: #e0e0e0;
 }
 
 body.dark-mode .wizard-option:hover {
     background: #252525;
     border-color: #4caf50;
+}
+
+body.dark-mode .wizard-option input:checked + .wizard-option-content,
+body.dark-mode .wizard-option:hover .wizard-option-content {
+    color: #ffffff;
 }
 
 /* Responsive Dashboard */
