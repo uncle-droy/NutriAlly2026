@@ -600,8 +600,7 @@ body.page-loaded {
 }
 
 .wizard-title-scanner {
-    color: #ff8c00;
-    margin-left: 4px;
+    display: none; /* Hidden since we're using single word "NutriAlly" */
 }
 
 .wizard-title-setup {
@@ -836,7 +835,7 @@ body.page-loaded {
 }
 
 .dashboard-title-scanner {
-    color: #ff4444;
+    display: none; /* Hidden since we're using single word "NutriAlly" */
 }
 
 .dashboard-section {
