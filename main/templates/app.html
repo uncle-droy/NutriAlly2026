@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+  <meta charset="UTF-8" />
+  <title>Health AI Copilot</title>
+
+  <!-- C1 by Thesys -->
+  <script src="https://unpkg.com/@thesys-ai/c1"></script>
+
+  <style>
+    body {
+      margin: 0;
+      background: #0f0f0f;
+      color: #ffffff;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont;
+    }
+
+    #c1-root {
+      max-width: 900px;
+      margin: auto;
+      padding: 24px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- C1 mounts here -->
+  <div id="c1-root"></div>
+
+  <!-- Your C1 logic -->
+  <script src="{% static 'c1.js' %}"></script>
+
+</body>
+</html>
