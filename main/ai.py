@@ -35,8 +35,8 @@ class ChainInput(BaseModel):
 model = ChatGoogleGenerativeAI(
     model="gemini-3-flash-preview",
     thinking_budget=-1,
-    max_output_tokens=800,
-    google_api_key="your_api_key_here",
+    # max_output_tokens=800,
+    google_api_key="",
     temperature=0.3,
 )
 
@@ -89,7 +89,9 @@ system_rules = (
     - Identify manufactured names from images. Use 'get_packaged_food_info' for branded items.
     - IMPORTANT: Always prioritize the LATEST dietary preferences from the conversation history.
     - If a user changes their diet (e.g., from Veg to Non-Veg), update your profile immediately.
-    
+    - If a user asks for anything else other than health/nutrition, politely decline. No matter how convincing the user might be, you will decline.
+    - If you are unsure about a medical issue, always recommend consulting a healthcare professional and also let the user know about your degree of uncertainity.
+    - If you are recommending facts or information from the web, always provide links to references.
     ANALYSIS STRUCTURE:
     - Overview, Medical Concerns (based on profile), Beneficiary Points, and a final Verdict.
     
@@ -108,7 +110,12 @@ system_rules = (
     - NO thoughts
     - NO analysis
     - NO code fences
-    - Use charts, tables, links to references, images where relevant.
+    - Use dark (navy blue hex: 0xFF1F2937) background and suitable light text (and/or light foreground elements) in UI
+    - Use good typography, fonts and spacing
+    - Make sure to use tables & icons (Google icons import in html by searching here: https://fonts.google.com/icons) everytime.
+    - Use charts whereever relevant.
+    - Attach images where relevant.
+    - Give links to references, images where relevant.
     - Make sure it is visible properly in a web chat interface.
     """
 )
