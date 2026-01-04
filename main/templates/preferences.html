@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     {% load static %}
-    <title>User Preferences</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Preferences - NutriAlly</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
 <body>
 
@@ -47,7 +49,7 @@
         <option value="vegetarian" {% if profile.dietary_preferences == "vegetarian" %}selected{% endif %}>Vegetarian</option>
         <option value="non_vegetarian" {% if profile.dietary_preferences == "non_vegetarian" %}selected{% endif %}>Non-Vegetarian</option>
         <option value="pescatarian" {% if profile.dietary_preferences == "pescatarian" %}selected{% endif %}>Pescatarian</option>
-        <optiion value="gluten_free" {% if profile.dietary_preferences == "gluten_free" %}selected{% endif %}>Gluten Free</option>
+        <option value="gluten_free" {% if profile.dietary_preferences == "gluten_free" %}selected{% endif %}>Gluten Free</option>
         <option value="keto" {% if profile.dietary_preferences == "keto" %}selected{% endif %}>Keto</option>
         <option value="paleo" {% if profile.dietary_preferences == "paleo" %}selected{% endif %}>Paleo</option>
         <option value="other" {% if profile.dietary_preferences == "other" %}selected{% endif %}>Other</option>

@@ -15,6 +15,7 @@ body {
     opacity: 0;
     transform: translateY(10px);
     transition: opacity 0.4s ease, transform 0.4s ease;
+    color: #000000;
 }
 
 body.page-loaded {
@@ -118,7 +119,7 @@ body.page-loaded {
     border: 1px solid #e0e0e0;
     border-radius: 20px;
     font-size: 14px;
-    color: #666;
+    color: #000000;
     margin-bottom: 30px;
 }
 
@@ -135,6 +136,7 @@ body.page-loaded {
     margin-bottom: 30px;
     letter-spacing: -2px;
     font-family: 'Montserrat', 'Poppins', sans-serif;
+    color: #000000;
 }
 
 .word-nutrially {
@@ -152,7 +154,7 @@ body.page-loaded {
 
 .hero-description {
     font-size: 18px;
-    color: #555;
+    color: #000000;
     line-height: 1.6;
     margin-bottom: 40px;
     max-width: 600px;
@@ -257,13 +259,13 @@ body.page-loaded {
 
 .stat-label {
     font-size: 16px;
-    color: #555;
+    color: #000000;
     font-weight: 500;
 }
 
 .cta-text {
     font-size: 20px;
-    color: #555;
+    color: #000000;
     margin-bottom: 40px;
     font-weight: 500;
 }
@@ -392,14 +394,14 @@ body.page-loaded {
 .feature-title {
     font-size: 24px;
     font-weight: 700;
-    color: #333;
+    color: #000000;
     margin-bottom: 12px;
     font-family: 'Montserrat', 'Poppins', sans-serif;
 }
 
 .feature-description {
     font-size: 16px;
-    color: #666;
+    color: #000000;
     line-height: 1.6;
 }
 
@@ -478,14 +480,14 @@ body.page-loaded {
     text-align: center;
     margin-bottom: 10px;
     font-size: 28px;
-    color: #333;
+    color: #000000;
     font-weight: 700;
 }
 
 .login-subtitle {
     text-align: center;
     font-size: 14px;
-    color: #666;
+    color: #000000;
     margin-bottom: 20px;
 }
 
@@ -497,7 +499,7 @@ body.page-loaded {
     display: block;
     margin-bottom: 6px;
     font-size: 14px;
-    color: #555;
+    color: #000000;
 }
 
 .login-form input,
@@ -510,6 +512,8 @@ body.page-loaded {
     font-size: 14px;
     outline: none;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    color: #000000;
+    background: #ffffff;
 }
 
 .login-form input:focus,
@@ -543,7 +547,7 @@ body.page-loaded {
     margin-top: 15px;
     text-align: center;
     font-size: 14px;
-    color: #555;
+    color: #000000;
 }
 
 .register-text a {
@@ -555,8 +559,6 @@ body.page-loaded {
 .register-text a:hover {
     text-decoration: underline;
 }
-
-/* Page transition for links with class page-link is handled in JS */
 
 /* ------------ Questionnaire / Wizard ------------ */
 .wizard-section {
@@ -590,6 +592,7 @@ body.page-loaded {
     font-weight: 800;
     letter-spacing: 0.4px;
     font-family: 'Montserrat', 'Poppins', sans-serif;
+    color: #000000;
 }
 
 .wizard-title-food {
@@ -597,7 +600,7 @@ body.page-loaded {
 }
 
 .wizard-title-scanner {
-    display: none; /* Hidden since we're using single word "NutriAlly" */
+    display: none;
 }
 
 .wizard-title-setup {
@@ -607,7 +610,7 @@ body.page-loaded {
 
 .wizard-step-text {
     font-size: 14px;
-    color: #7a7a7a;
+    color: #000000;
 }
 
 .wizard-progress {
@@ -630,7 +633,7 @@ body.page-loaded {
 .wizard-question {
     font-size: 24px;
     font-weight: 700;
-    color: #333;
+    color: #000000;
     margin-bottom: 22px;
 }
 
@@ -660,7 +663,7 @@ body.page-loaded {
 
 .wizard-option-content {
     font-size: 16px;
-    color: #333;
+    color: #000000;
 }
 
 .wizard-option::after {
@@ -684,10 +687,6 @@ body.page-loaded {
     font-weight: 600;
 }
 
-.wizard-option input:checked ~ .wizard-option-content::after {
-    /* no-op: selection handled by parent pseudo element */
-}
-
 .wizard-option input:checked ~ .wizard-option-content,
 .wizard-option:has(input:checked) {
     border-color: #4caf50;
@@ -703,7 +702,7 @@ body.page-loaded {
 
 .wizard-helper-text {
     font-size: 14px;
-    color: #666;
+    color: #000000;
     margin-bottom: 16px;
 }
 
@@ -717,6 +716,8 @@ body.page-loaded {
     min-height: 150px;
     outline: none;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    color: #000000;
+    background: #ffffff;
 }
 
 .wizard-textarea:focus {
@@ -734,7 +735,7 @@ body.page-loaded {
 .wizard-back {
     background: transparent;
     border: none;
-    color: #888;
+    color: #000000;
     font-size: 14px;
     cursor: pointer;
 }
@@ -825,6 +826,7 @@ body.page-loaded {
     letter-spacing: -1px;
     display: inline-block;
     font-family: 'Montserrat', 'Poppins', sans-serif;
+    color: #000000;
 }
 
 .dashboard-title-food {
@@ -832,7 +834,7 @@ body.page-loaded {
 }
 
 .dashboard-title-scanner {
-    display: none; /* Hidden since we're using single word "NutriAlly" */
+    display: none;
 }
 
 .dashboard-section {
@@ -854,7 +856,7 @@ body.page-loaded {
 .dashboard-card-title {
     font-size: 28px;
     font-weight: 700;
-    color: #333;
+    color: #000000;
     margin-bottom: 30px;
 }
 
@@ -887,7 +889,7 @@ body.page-loaded {
 }
 
 .upload-text {
-    color: #666;
+    color: #000000;
     font-size: 16px;
     margin: 0;
 }
@@ -961,7 +963,6 @@ body.page-loaded {
     flex-direction: column;
 }
 
-/* Profile Sidebar Header */
 .profile-sidebar-header {
     display: flex;
     justify-content: space-between;
@@ -973,6 +974,7 @@ body.page-loaded {
     font-size: 32px;
     font-weight: 800;
     letter-spacing: -1px;
+    color: #000000;
 }
 
 .profile-title-pro {
@@ -1002,7 +1004,6 @@ body.page-loaded {
     color: #333;
 }
 
-/* Profile Menu View */
 .profile-menu-view {
     display: flex;
     flex-direction: column;
@@ -1010,7 +1011,6 @@ body.page-loaded {
     min-height: 0;
 }
 
-/* Profile Menu */
 .profile-menu {
     display: flex;
     flex-direction: column;
@@ -1028,7 +1028,7 @@ body.page-loaded {
     border-radius: 12px;
     font-size: 16px;
     font-weight: 500;
-    color: #333;
+    color: #000000;
     cursor: pointer;
     text-align: left;
     transition: all 0.2s ease;
@@ -1056,7 +1056,6 @@ body.page-loaded {
     background: #45a049 !important;
 }
 
-/* Profile Summary Card */
 .profile-summary-card {
     margin-top: auto;
     padding: 20px;
@@ -1067,7 +1066,7 @@ body.page-loaded {
 .profile-summary-title {
     font-size: 18px;
     font-weight: 700;
-    color: #333;
+    color: #000000;
     margin-bottom: 16px;
 }
 
@@ -1085,17 +1084,16 @@ body.page-loaded {
 
 .profile-summary-label {
     font-size: 14px;
-    color: #666;
+    color: #000000;
     font-weight: 500;
 }
 
 .profile-summary-value {
     font-size: 14px;
-    color: #333;
+    color: #000000;
     font-weight: 600;
 }
 
-/* Profile Overlay */
 .profile-overlay {
     position: fixed;
     top: 0;
@@ -1168,7 +1166,7 @@ body.page-loaded {
 .fullscreen-title {
     font-size: 28px;
     font-weight: 700;
-    color: #333;
+    color: #000000;
     margin: 0;
 }
 
@@ -1254,7 +1252,7 @@ body.page-loaded {
 .recent-scans h4 {
     font-size: 18px;
     font-weight: 600;
-    color: #333;
+    color: #000000;
     margin-bottom: 16px;
 }
 
@@ -1284,7 +1282,7 @@ body.page-loaded {
 .chart-bar span {
     font-size: 12px;
     font-weight: 600;
-    color: #333;
+    color: #000000;
     position: absolute;
     bottom: -20px;
 }
@@ -1322,13 +1320,13 @@ body.page-loaded {
 .scan-name {
     font-size: 15px;
     font-weight: 600;
-    color: #333;
+    color: #000000;
     margin-bottom: 4px;
 }
 
 .scan-date {
     font-size: 12px;
-    color: #666;
+    color: #000000;
 }
 
 .scan-calories {
@@ -1353,7 +1351,7 @@ body.page-loaded {
 .preference-label {
     font-size: 14px;
     font-weight: 600;
-    color: #333;
+    color: #000000;
 }
 
 .preference-select,
@@ -1365,7 +1363,7 @@ body.page-loaded {
     font-size: 14px;
     font-family: inherit;
     background: white;
-    color: #333;
+    color: #000000;
     transition: border-color 0.2s ease;
 }
 
@@ -1420,7 +1418,7 @@ body.page-loaded {
     text-align: left;
     font-size: 14px;
     font-weight: 500;
-    color: #333;
+    color: #000000;
     cursor: pointer;
     transition: all 0.2s ease;
 }
@@ -1472,7 +1470,7 @@ body.page-loaded {
 
 .assistant-message .message-bubble {
     background: white;
-    color: #333;
+    color: #000000;
     border-bottom-left-radius: 4px;
 }
 
@@ -1490,7 +1488,7 @@ body.page-loaded {
     font-size: 14px;
     font-family: inherit;
     background: white;
-    color: #333;
+    color: #000000;
 }
 
 .ai-input:focus {
@@ -1543,15 +1541,153 @@ body.page-loaded {
     opacity: 0.3;
 }
 
+/* Responsive Dashboard */
+@media (max-width: 768px) {
+    .dashboard-title {
+        font-size: 36px;
+    }
+
+    .dashboard-card {
+        padding: 30px 20px;
+    }
+
+    .upload-buttons {
+        flex-direction: column;
+    }
+
+    .btn-camera,
+    .btn-upload {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .profile-sidebar {
+        width: 280px;
+    }
+
+    .profile-sidebar-content {
+        padding: 24px 20px;
+    }
+}
+
+/* ==================== PREFERENCES PAGE STYLES ==================== */
+body > h1:first-of-type {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 800;
+    color: #2d5016;
+    margin-bottom: 10px;
+    font-family: 'Montserrat', 'Poppins', sans-serif;
+    letter-spacing: 0.4px;
+    padding-top: 40px;
+}
+
+body > form {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 40px;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 18px 60px rgba(0, 0, 0, 0.08);
+    font-family: 'Inter', 'Poppins', sans-serif;
+}
+
+body > form label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #000000;
+    font-family: 'Inter', 'Poppins', sans-serif;
+}
+
+body > form input[type="text"],
+body > form input[type="number"],
+body > form select,
+body > form textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+    background: #ffffff;
+    font-size: 15px;
+    color: #000000;
+    font-family: 'Inter', 'Poppins', sans-serif;
+    margin-bottom: 20px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    box-sizing: border-box;
+}
+
+body > form input[type="text"]:focus,
+body > form input[type="number"]:focus,
+body > form select:focus,
+body > form textarea:focus {
+    border-color: #4caf50;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+}
+
+body > form select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23000000' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+}
+
+body > form textarea {
+    resize: vertical;
+    min-height: 100px;
+    font-family: 'Inter', 'Poppins', sans-serif;
+    line-height: 1.5;
+}
+
+body > form button[type="submit"] {
+    background: #4caf50;
+    color: #ffffff;
+    border: none;
+    padding: 14px 32px;
+    border-radius: 999px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    font-family: 'Montserrat', 'Poppins', sans-serif;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 22px rgba(76, 175, 80, 0.35);
+}
+
+body > form button[type="submit"]:hover {
+    background: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(76, 175, 80, 0.4);
+}
+
+body > form button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+body > form::before {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #4caf50, #ff8c00, #ff4444);
+    border-radius: 2px;
+    margin: -20px auto 30px;
+}
+
+body > h1:first-of-type + form {
+    margin-top: 20px;
+}
+
 /* ==================== DARK MODE STYLES ==================== */
 body.dark-mode {
     background: linear-gradient(to right, #1a1a1a, #2d2d2d);
     color: #ffffff;
-}
-
-/* Dark mode text colors - ensure all text is visible */
-body.dark-mode * {
-    color: inherit;
 }
 
 body.dark-mode .hero-description,
@@ -1600,25 +1736,6 @@ body.dark-mode .stat-number {
     color: #ffffff;
 }
 
-body.dark-mode .word-nutrially {
-    color: #ffffff;
-}
-
-body.dark-mode .word-know,
-body.dark-mode .word-what,
-body.dark-mode .word-you,
-body.dark-mode .word-eat {
-    display: none;
-}
-
-body.dark-mode .wizard-title-food,
-body.dark-mode .wizard-title-scanner,
-body.dark-mode .wizard-title-setup,
-body.dark-mode .dashboard-title-food,
-body.dark-mode .dashboard-title-scanner {
-    color: #ffffff;
-}
-
 body.dark-mode .dashboard-card {
     background: #2d2d2d;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
@@ -1644,16 +1761,6 @@ body.dark-mode .upload-text {
 
 body.dark-mode .upload-icon {
     color: #666;
-}
-
-body.dark-mode .profile-button {
-    border-color: #4caf50;
-    color: #4caf50;
-}
-
-body.dark-mode .profile-button:hover {
-    background: #4caf50;
-    color: #1a1a1a;
 }
 
 body.dark-mode .profile-sidebar {
@@ -1705,18 +1812,6 @@ body.dark-mode .profile-summary-value {
 
 body.dark-mode .profile-summary-item {
     border-bottom-color: #444;
-}
-
-body.dark-mode .profile-back-btn {
-    color: #aaa;
-}
-
-body.dark-mode .profile-back-btn:hover {
-    color: #e0e0e0;
-}
-
-body.dark-mode .profile-content-title {
-    color: #e0e0e0;
 }
 
 body.dark-mode .tracker-chart h4,
@@ -1825,24 +1920,6 @@ body.dark-mode .upload-area-fullscreen:hover {
     background: #252525;
 }
 
-body.dark-mode .dark-mode-toggle {
-    border-color: #ffa366;
-    color: #ffa366;
-}
-
-body.dark-mode .dark-mode-toggle:hover {
-    background: #ffa366;
-    color: #1a1a1a;
-}
-
-body.dark-mode .help-button {
-    background: #444;
-}
-
-body.dark-mode .help-button:hover {
-    background: #555;
-}
-
 body.dark-mode .login-container,
 body.dark-mode .wizard-card {
     background: #2d2d2d;
@@ -1884,32 +1961,75 @@ body.dark-mode .wizard-option:hover .wizard-option-content {
     color: #ffffff;
 }
 
-/* Responsive Dashboard */
+/* Dark mode for preferences page */
+body.dark-mode > h1:first-of-type {
+    color: #ffffff;
+}
+
+body.dark-mode > form {
+    background: #2d2d2d;
+    box-shadow: 0 18px 60px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode > form label {
+    color: #e0e0e0;
+}
+
+body.dark-mode > form input[type="text"],
+body.dark-mode > form input[type="number"],
+body.dark-mode > form select,
+body.dark-mode > form textarea {
+    background: #1f1f1f;
+    border-color: #444;
+    color: #e0e0e0;
+}
+
+body.dark-mode > form input[type="text"]:focus,
+body.dark-mode > form input[type="number"]:focus,
+body.dark-mode > form select:focus,
+body.dark-mode > form textarea:focus {
+    border-color: #4caf50;
+    background: #252525;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+}
+
+body.dark-mode > form select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23e0e0e0' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+}
+
+/* Responsive for preferences page */
 @media (max-width: 768px) {
-    .dashboard-title {
-        font-size: 36px;
+    body > h1:first-of-type {
+        font-size: 28px;
+        padding-top: 30px;
     }
 
-    .dashboard-card {
+    body > form {
         padding: 30px 20px;
-    }
-
-    .upload-buttons {
-        flex-direction: column;
-    }
-
-    .btn-camera,
-    .btn-upload {
-        width: 100%;
-        justify-content: center;
-    }
-
-    .profile-sidebar {
-        width: 280px;
-    }
-
-    .profile-sidebar-content {
-        padding: 24px 20px;
+        margin: 20px;
     }
 }
 
+@media (max-width: 480px) {
+    body > h1:first-of-type {
+        font-size: 24px;
+        padding-top: 20px;
+    }
+
+    body > form {
+        padding: 24px 16px;
+        margin: 16px;
+    }
+
+    body > form label {
+        font-size: 14px;
+    }
+
+    body > form input[type="text"],
+    body > form input[type="number"],
+    body > form select,
+    body > form textarea {
+        font-size: 14px;
+        padding: 10px 14px;
+    }
+}

@@ -36,7 +36,7 @@ model = ChatGoogleGenerativeAI(
     model="gemini-3-flash-preview",
     thinking_budget=-1,
     max_output_tokens=800,
-    google_api_key="your_api_key_here",
+    google_api_key="AIzaSyA68qX67YRDWwQ6fOGAd9-pw8Li34ylKyo",
     temperature=0.3,
 )
 

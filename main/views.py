@@ -62,29 +62,36 @@ def scan(request):
 
 @login_required
 def preferences(request):
-    profile = Profile.objects.get(user=request.user)
+    try:
+        profile, _ = Profile.objects.get_or_create(user=request.user)
 
-    if request.method == "POST":
-        profile.name = request.POST.get("name", "")
-        profile.age = request.POST.get("age") or None
-        profile.gender = request.POST.get("gender", "")
+        if request.method == "POST":
+            profile.name = request.POST.get("name", "")
+            profile.age = request.POST.get("age") or None
+            profile.gender = request.POST.get("gender", "")
 
-        profile.height = request.POST.get("height") or None
-        profile.weight = request.POST.get("weight") or None
+            profile.height = request.POST.get("height") or None
+            profile.weight = request.POST.get("weight") or None
 
-        profile.fav = request.POST.get("fav", "")
-        profile.allergies = request.POST.get("allergies", "")
+            profile.fav = request.POST.get("fav", "")
+            profile.allergies = request.POST.get("allergies", "")
 
-        profile.dietary_preferences = request.POST.get("dietary_preferences", "")
-        profile.activity_level = request.POST.get("activity_level", "")
-        profile.goals = request.POST.get("goals", "")
+            profile.dietary_preferences = request.POST.get("dietary_preferences", "")
+            profile.activity_level = request.POST.get("activity_level", "")
+            profile.goals = request.POST.get("goals", "")
+            profile.extra_information = request.POST.get("extra_information", "")
 
-        profile.save()
-        return redirect("main:scan")
+            profile.save()
+            return redirect("main:scan")
 
-    return render(request, "preferences.html", {
-        "profile": profile
-    })
+        return render(request, "preferences.html", {
+            "profile": profile
+        })
+    except Exception as e:
+        # Log the error and return a simple error page
+        import traceback
+        traceback.print_exc()
+        return HttpResponse(f"Error loading preferences: {str(e)}", status=500)
 
 def assistant(request):
     return render(request, 'assisstant.html')
