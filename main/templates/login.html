@@ -1,64 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-{% load static %}
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - NutriAlly</title>
-    
-    <link rel="stylesheet" href="{% static 'styles.css' %}">
-
+    <title>Login</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f4f4f4; }
+        .container { background: white; padding: 20px; border-radius: 8px; max-width: 400px; margin: auto; }
+        .btn { background: #007bff; color: white; border: none; padding: 10px; cursor: pointer; width: 100%; }
+    </style>
 </head>
 <body>
-    <!-- Dark Mode Toggle (optional but keeps design consistent) -->
-    <button class="dark-mode-toggle" id="darkModeToggle">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-        </svg>
-    </button>
-
-    <!-- Help Button -->
-    <button class="help-button">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="10"></circle>
-            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
-            <line x1="12" y1="17" x2="12.01" y2="17"></line>
-        </svg>
-    </button>
-
-    <!-- Login Section (separate page) -->
-    <section class="login-section">
-        <div class="login-container">
-            <h2>Login</h2>
-            <p class="login-subtitle">Please enter your details to continue.</p>
-
-            <!-- Form structure/text mirroring the reference image -->
-            <form method="POST" class="login-form">
-                <!-- If you later use Django, you can re‑add {% csrf_token %} here -->
-                {% csrf_token %}
-                <p>
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" required>
-                </p>
-
-                <p>
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required>
-                </p>
-
-                <button type="submit" class="btn">Login</button>
-            </form>
-
-            <p class="register-text">
-                Don't have an account?
-                <a href="{% url 'main:register' %}" class="page-link">Register here</a>
-            </p>
-        </div>
-    </section>
-
-    <script src="{% static 'script.js' %}"></script>
-
+    <div class="container">
+        <h2>Login</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn">Login</button>
+        </form>
+        <p>Don't have an account? <a href="{% url 'main:register' %}">Register here</a></p>
+    </div>
 </body>
 </html>
-
-

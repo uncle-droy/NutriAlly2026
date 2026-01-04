@@ -10,11 +10,10 @@ class Profile(models.Model):
     weight = models.FloatField(null=True, blank=True)  # in kilograms
     fav = models.CharField(max_length=200, blank=True)
     allergies = models.CharField(max_length=200, blank=True)
-    dietary_preferences = models.CharField(max_length=200, default='', blank=True)
+    dietary_preferences = models.CharField(max_length=200, blank=True)
     activity_level = models.CharField(max_length=50, blank=True)
     extra_information = models.TextField(blank=True)
     goals = models.TextField(blank=True)
 
     def __str__(self):
-
         return f"{self.user.username} Name: {self.name}"

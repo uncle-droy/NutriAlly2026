@@ -50,7 +50,10 @@
 <body class="bg-gray-900 text-gray-100 h-screen flex flex-col">
 
     <!-- Header -->
-    <div class="bg-gray-800 border-b border-gray-700 px-6 py-4 flex items-center gap-3">
+    <!-- Header -->
+<div class="bg-gray-800 border-b border-gray-700 px-6 py-4 flex items-center justify-between">
+    <!-- Left: App Info -->
+    <div class="flex items-center gap-3">
         <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
             AI
         </div>
@@ -59,6 +62,35 @@
             <p class="text-xs text-gray-400">Powered by AI</p>
         </div>
     </div>
+
+    <!-- Right: Actions -->
+    <div class="flex items-center gap-3">
+        <!-- New Chat -->
+        <a href = "{% url 'main:assistant' %}"
+            title="New Chat"
+            class="p-2 rounded-lg bg-gray-700 hover:bg-gray-600 transition">
+            💬
+        </a>
+
+        <!-- Preferences -->
+        <a href="{% url 'main:preferences' %}"
+            title="Preferences"
+            class="p-2 rounded-lg bg-gray-700 hover:bg-gray-600 transition">
+            ⚙️
+        </a>
+
+        <!-- Logout -->
+        <form method="POST" action="{% url 'main:logout' %}">
+            {% csrf_token %}
+            <button type="submit"
+                title="Logout"
+                class="p-2 rounded-lg bg-red-600 hover:bg-red-500 transition">
+                ➜]
+            </button>
+        </form>
+    </div>
+</div>
+
 
     <!-- Chat Container -->
     <div class="flex-1 overflow-y-auto px-6 py-4 space-y-4" id="messages">
