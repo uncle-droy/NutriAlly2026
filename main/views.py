@@ -119,7 +119,21 @@ def process(request):
 def sync_profile_to_ai_memory(thread_id, profile):
     conn = sqlite3.connect("health_ai_memory.db")
     cur = conn.cursor()
-
+    cur.execute("""
+            CREATE TABLE IF NOT EXISTS user_prefs (
+            thread_id TEXT PRIMARY KEY,
+            age INTEGER,
+            gender TEXT,
+            height REAL,
+            weight REAL,
+            fav TEXT,
+            diet TEXT,
+            allergies TEXT,
+            extra_information TEXT,
+            activity_level TEXT,
+            goals TEXT
+        );
+        """)
     cur.execute("""
         INSERT INTO user_prefs (
             thread_id, age, gender, height, weight,
