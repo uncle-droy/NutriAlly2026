@@ -177,7 +177,13 @@ document.querySelectorAll('.page-link').forEach(link => {
             const fitnessGoal = document.querySelector('input[name="fitness_goal"]:checked')?.value || '';
             
             // 2. Prepare for Django (CSRF is required for POST)
-            const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+            const csrfEl = document.querySelector('[name=csrfmiddlewaretoken]');
+            if (!csrfEl) {
+                console.error("CSRF token missing");
+                return;
+            }
+            const csrfToken = csrfEl.value;
+
             
             // 3. Send to Server
             fetch('', { // Sending to the current URL

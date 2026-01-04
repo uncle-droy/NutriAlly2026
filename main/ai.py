@@ -27,6 +27,8 @@ import json
 from langchain_core.output_parsers import JsonOutputToolsParser
 from django.http import JsonResponse
 
+key = os.getenv("GEMINI_API_KEY")
+
 # Input model
 class ChainInput(BaseModel):
     query: str
@@ -36,7 +38,7 @@ model = ChatGoogleGenerativeAI(
     model="gemini-3-flash-preview",
     thinking_budget=-1,
     # max_output_tokens=800,
-    google_api_key="",
+    google_api_key= key,
     temperature=0.3,
 )
 
@@ -71,10 +73,17 @@ CREATE TABLE IF NOT EXISTS messages (
 conn.execute("""
 CREATE TABLE IF NOT EXISTS user_prefs (
     thread_id TEXT PRIMARY KEY,
+    age INTEGER,
+    gender TEXT,
+    height REAL,
+    weight REAL,
+    fav TEXT,
     diet TEXT,
     allergies TEXT,
+    extra_information TEXT,
+    activity_level TEXT,
     goals TEXT
-)
+);
 """)
 
 conn.commit()
@@ -165,28 +174,44 @@ def load_context(thread_id):
         WHERE thread_id = ?
         ORDER BY created_at DESC
         LIMIT 4
-    """, (thread_id,)).fetchall()
+    """, (str(thread_id),)).fetchall()
 
     prefs = conn.execute("""
-        SELECT diet, allergies, goals
-        FROM user_prefs WHERE thread_id = ?
-    """, (thread_id,)).fetchone()
+        SELECT
+            age, gender, height, weight,
+            fav, diet, allergies,
+            extra_information, activity_level, goals
+        FROM user_prefs
+        WHERE thread_id = ?
+    """, (str(thread_id),)).fetchone()
 
     return {
         "messages": msgs[::-1],
-        "preferences": prefs
+        "preferences": {
+        "age": prefs[0],
+        "gender": prefs[1],
+        "height": prefs[2],
+        "weight": prefs[3],
+        "fav": prefs[4],
+        "diet": prefs[5],
+        "allergies": prefs[6],
+        "extra_information": prefs[7],
+        "activity_level": prefs[8],
+        "goals": prefs[9],}
+         if prefs else {}
     }
 
 def get_ai_response(user_input: str, thread_id: str, image_file=None):
     # ---------- Load short context ----------
     context = load_context(thread_id)
     if context.get("messages", []) and isinstance(context["messages"], list):
-        # The colon [:] is CRITICAL here. 
-        # [-10:] means "last 10 items". [-10] means "the 10th item from the end" (which crashes if list is small)
         recent_messages = context.get("messages", [])[-10:] 
     else:
         recent_messages = []
     # 1. Construct the Text Prompt
+
+    prefs = context.get("preferences", {})
+
     prompt = f"""
     User query:
     {user_input}
@@ -194,8 +219,19 @@ def get_ai_response(user_input: str, thread_id: str, image_file=None):
     Recent conversation:
     {recent_messages}
 
-    User preferences:
-    {context['preferences']}
+    User profile data:
+    - Age: {prefs.get('age')}
+    - Gender: {prefs.get('gender')}
+    - Height: {prefs.get('height')} cm
+    - Weight: {prefs.get('weight')} kg
+    - Favorite foods: {prefs.get('fav')}
+    - Diet: {prefs.get('diet')}
+    - Allergies: {prefs.get('allergies')}
+    - Extra information: {prefs.get('extra_information')}
+    - Activity level: {prefs.get('activity_level')}
+    - Goals: {prefs.get('goals')}
+
+    Always respect dietary and allergy constraints.
     """.strip()
 
     # 2. Build the Content Payload (List of blocks)
@@ -206,6 +242,7 @@ def get_ai_response(user_input: str, thread_id: str, image_file=None):
         "type": "text", 
         "text": prompt
     })
+    print("PROMPT SENT TO AI:", prompt)
 
     # Add the image block (if image_file was passed to the function)
     # Ensure 'image_file' is passed into this function arguments!
@@ -310,53 +347,3 @@ def get_ai_response(user_input: str, thread_id: str, image_file=None):
 
 
 
-# def get_conversation_response(user_query: str, thread_id: str):
-#     """Get conversational response"""
-#     config = {"configurable": {"thread_id": thread_id}}
-    
-#     messages = [HumanMessage(content=user_query)]
-    
-#     response = ""
-#     for chunk in agent.stream({"messages": messages}, config=config):
-#         for node_name, node_state in chunk.items():
-#             if isinstance(node_state, dict) and "messages" in node_state:
-#                 for msg in node_state["messages"]:
-#                     if isinstance(msg, AIMessage) and msg.content:
-#                         response = msg.content
-    
-#     return response
-
-# def generate_ui_from_history(thread_id: str):
-#     """Generate UI based on conversation history"""
-#     config = {"configurable": {"thread_id": thread_id}}
-    
-#     # Get conversation history
-#     state = agent.get_state(config)
-#     history = state.values.get("messages", [])
-    
-#     # Format history for UI agent
-#     history_text = "\n".join([
-#         f"{'User' if isinstance(msg, HumanMessage) else 'Assistant'}: {msg.content}"
-#         for msg in history[-6:]  # Last 3 exchanges
-#     ])
-    
-#     ui_prompt = f"""Based on this conversation, generate a relevant UI component:
-
-# {history_text}
-
-# Generate HTML with Tailwind CSS. Only output the HTML code, no explanations."""
-    
-#     messages = [HumanMessage(content=ui_prompt)]
-    
-#     ui_html = ""
-#     for chunk in ui_agent.stream({"messages": messages}, config={}):
-#         for node_name, node_state in chunk.items():
-#             if isinstance(node_state, dict) and "messages" in node_state:
-#                 for msg in node_state["messages"]:
-#                     if isinstance(msg, AIMessage) and msg.content:
-#                         ui_html = msg.content
-    
-#     # Clean up the HTML (remove markdown code blocks if present)
-#     ui_html = ui_html.replace("```html", "").replace("```", "").strip()
-    
-#     return ui_html

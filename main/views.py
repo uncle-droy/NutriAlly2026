@@ -1,3 +1,4 @@
+import sqlite3
 import uuid, json, time
 from django.http import HttpResponse
 from django.contrib.auth import login, logout
@@ -25,11 +26,12 @@ def register(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            login(request, user)   # session created here
+            username = form.cleaned_data.get('username')
+            messages.success(request, f'Account created for {username}!')
+            login(request, user)
             return redirect('main:questionnaire')
     else:
         form = UserCreationForm()
-        
     return render(request, 'register.html', {'form': form})
 
 def questionnaire(request):
@@ -80,12 +82,17 @@ def preferences(request):
         profile.goals = request.POST.get("goals", "")
 
         profile.save()
-        return redirect("main:scan")
+        sync_profile_to_ai_memory(
+            thread_id=request.user.id,
+            profile=profile
+        )
+        return redirect("main:assistant")
 
     return render(request, "preferences.html", {
         "profile": profile
     })
 
+@login_required
 def assistant(request):
     return render(request, 'assisstant.html')
 
@@ -95,7 +102,7 @@ def process(request):
     if not request.session.session_key:
         request.session.create()
 
-    thread_id = request.session.session_key
+    thread_id = request.user.id if request.user.is_authenticated else request.session.session_key
 
     if not user_input and not image_file:
         return JsonResponse({"error": "Empty message"}, status=400)
@@ -108,3 +115,44 @@ def process(request):
         "text": result["text"],
         "ui": result["ui"]
     })
+
+def sync_profile_to_ai_memory(thread_id, profile):
+    conn = sqlite3.connect("health_ai_memory.db")
+    cur = conn.cursor()
+
+    cur.execute("""
+        INSERT INTO user_prefs (
+            thread_id, age, gender, height, weight,
+            fav, diet, allergies, extra_information,
+            activity_level, goals
+        )
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ON CONFLICT(thread_id) DO UPDATE SET
+            age = excluded.age,
+            gender = excluded.gender,
+            height = excluded.height,
+            weight = excluded.weight,
+            fav = excluded.fav,
+            diet = excluded.diet,
+            allergies = excluded.allergies,
+            extra_information = excluded.extra_information,
+            activity_level = excluded.activity_level,
+            goals = excluded.goals
+    """, (
+        str(thread_id),
+        profile.age,
+        profile.gender,
+        profile.height,
+        profile.weight,
+        profile.fav,
+        profile.dietary_preferences,
+        profile.allergies,
+        profile.extra_information,
+        profile.activity_level,
+        profile.goals
+    ))
+
+    conn.commit()
+    conn.close()
+
+
