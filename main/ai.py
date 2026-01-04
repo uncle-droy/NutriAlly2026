@@ -39,7 +39,7 @@ model = ChatGoogleGenerativeAI(
     thinking_budget=-1,
 <<<<<<< HEAD
     max_output_tokens=800,
-    google_api_key="AIzaSyA68qX67YRDWwQ6fOGAd9-pw8Li34ylKyo",
+    google_api_key="enter your api key here",
 =======
     # max_output_tokens=800,
     google_api_key= key,
