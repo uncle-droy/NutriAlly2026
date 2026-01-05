@@ -37,13 +37,8 @@ class ChainInput(BaseModel):
 model = ChatGoogleGenerativeAI(
     model="gemini-3-flash-preview",
     thinking_budget=-1,
-<<<<<<< HEAD
-    max_output_tokens=800,
-    google_api_key="enter your api key here",
-=======
     # max_output_tokens=800,
     google_api_key= key,
->>>>>>> 895827fdcd67664a0649819e5e14360b3004e086
     temperature=0.3,
 )
 

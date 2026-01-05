@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
     <style>
         body { font-family: Arial, sans-serif; margin: 40px; background-color: #f4f4f4; }
         .container { background: white; padding: 20px; border-radius: 8px; max-width: 400px; margin: auto; }
@@ -19,5 +21,6 @@
         </form>
         <p>Already have an account? <a href="{% url 'main:login' %}">Login here</a></p>
     </div>
+    <script src="{% static 'script.js' %}" defer></script>
 </body>
 </html>

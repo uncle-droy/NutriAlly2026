@@ -83,27 +83,22 @@ def preferences(request):
             profile.goals = request.POST.get("goals", "")
             profile.extra_information = request.POST.get("extra_information", "")
 
-<<<<<<< HEAD
             profile.save()
-            return redirect("main:scan")
-=======
-        profile.save()
-        sync_profile_to_ai_memory(
-            thread_id=request.user.id,
-            profile=profile
-        )
-        return redirect("main:assistant")
->>>>>>> 895827fdcd67664a0649819e5e14360b3004e086
+            sync_profile_to_ai_memory(
+                thread_id=request.user.id,
+                profile=profile
+            )
+            return redirect("main:assistant")
 
         return render(request, "preferences.html", {
-            "profile": profile
-        })
+                "profile": profile
+            })    
     except Exception as e:
         # Log the error and return a simple error page
         import traceback
         traceback.print_exc()
         return HttpResponse(f"Error loading preferences: {str(e)}", status=500)
-
+    
 @login_required
 def assistant(request):
     return render(request, 'assisstant.html')
